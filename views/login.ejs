@@ -1,0 +1,64 @@
+<%- include("./partials/_header") %> <%- include("./partials/_navigation") %>
+<div class="contact_section layout_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="contact_taital contact_heading">Login</h1>
+      </div>
+    </div>
+    <div class="contact_section_2">
+      <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12">
+          <div class="mail_section map_form_container">
+            <div id="message"></div>
+            <form method="POST" action="/users/login">
+              <div class="offset-1 col-lg-10 col-md-10 col-sm-10">
+                <% if(flashMessages) { %> <% if(flashMessages.success) {%>
+                <div class="alert alert-success">
+                  <%= flashMessages.success %>
+                </div>
+
+                <% } else if(flashMessages.error) {%>
+                <div class="alert alert-danger"><%= flashMessages.error %></div>
+                <% } %> <% } %>
+              </div>
+
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="mail_text"
+                placeholder="Email"
+              />
+
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="mail_text"
+                placeholder="Password"
+              />
+
+              <div class="btn_mai">
+                <button
+                  type="submit"
+                  value="LOGIN"
+                  id="submit"
+                  class="btn btn-dark btn-radius btn-brd btn-block"
+                >
+                  LOGIN
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  </div>
+</div>
+<!-- end container -->
+
+<%- include("./partials/_footer") %>

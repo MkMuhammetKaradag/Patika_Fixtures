@@ -1,0 +1,127 @@
+<%- include("./partials/_header") %> <%- include("./partials/_navigation") %>
+<!-- header section end -->
+<!-- furnitures section start -->
+<div class="furnitures_section layout_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="furnitures_taital">Our Furnitures Work</h1>
+      </div>
+    </div>
+    <!-- <div class="furnitures_section_2">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="hover01 column">
+            <figure><img src="images/img-1.png" /></figure>
+          </div>
+          <h3 class="introduction_text">Bedroom</h3>
+          <div class="seemore_bt"><a href="#">See More</a></div>
+        </div>
+        <div class="col-md-4">
+          <div class="hover01 column">
+            <figure><img src="images/img-2.png" /></figure>
+          </div>
+          <h3 class="introduction_text">Office</h3>
+          <div class="seemore_bt active"><a href="#">See More</a></div>
+        </div>
+        <div class="col-md-4">
+          <div class="hover01 column">
+            <figure><img src="images/img-3.png" /></figure>
+          </div>
+          <h3 class="introduction_text">Bathroom</h3>
+          <div class="seemore_bt"><a href="#">See More</a></div>
+        </div>
+      </div>
+    </div> -->
+    <div id="overviews" class="furnitures_section_2">
+      <% if(flashMessages) { %> <% if(flashMessages.success) {%>
+      <div class="alert alert-success"><%= flashMessages.success %></div>
+
+      <% } else if(flashMessages.error) {%>
+      <div class="alert alert-danger"><%= flashMessages.error %></div>
+      <% } %> <% } %>
+
+      <div class="row">
+        <div class="col-lg-9 blog-post-single">
+          <div class="row">
+            <% for (const furniture of furnitures) { %>
+            <div class="col-md-4">
+              <div class="hover01 column">
+                <figure>
+                  <img src="<%= furniture.image %>" alt="" class="img-fluid" />
+                </figure>
+              </div>
+
+              <h3 class="introduction_text">
+                <a
+                  class="introduction_text"
+                  href="/furnitures/<%= furniture.slug %>"
+                  ><%= furniture.name %></a
+                >
+              </h3>
+
+              <div class="course-meta-bot">
+                <ul>
+                  <li>
+                    <i class="fa fa-user" aria-hidden="true"></i>Creater Name
+                    :<%= furniture.user.name %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- end col -->
+
+            <% }%>
+          </div>
+        </div>
+        <div class="col-lg-3 col-12 right-single">
+          <div class="widget-search">
+            <div class="site-search-area">
+              <form method="GET" id="site-searchform" action="/furnitures">
+                <div>
+                  <input
+                    class="input-text form-control"
+                    name="search"
+                    id="search-k"
+                    placeholder="Search..."
+                    type="text"
+                  />
+                  <button
+                    id="searchsubmit"
+                    value="Search"
+                    type="submit"
+                  ></button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="widget-categories">
+            <h3 class="widget-title">Categories</h3>
+
+            <ul>
+              <% for (const ctg of categories) { %>
+              <li>
+                <a
+                  class="introduction_text"
+                  href="/furnitures?categories=<%= ctg.slug %>"
+                  ><%= ctg.name %></a
+                >
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+        <!-- end row -->
+
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+
+      <!-- end container -->
+    </div>
+  </div>
+</div>
+<!-- furnitures section end -->
+<!-- footer section start -->
+<%- include("./partials/_footer") %>
